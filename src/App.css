@@ -1,0 +1,277 @@
+/* App.css — estils específics de l'app i del joc */
+
+/* ---------- Layout general ---------- */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+  width: 100%;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand {
+  font-size: 1.6rem;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.user-badge {
+  padding: 6px 12px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px 0;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 24px;
+}
+
+/* ---------- Botons ---------- */
+button {
+  font: inherit;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+button:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+button.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+button.primary:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+button.ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+/* ---------- Card (contenidor principal) ---------- */
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--shadow);
+}
+.card.hero { max-width: 640px; text-align: center; }
+.card .lead { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 24px; }
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.info {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+.info ul { padding-left: 20px; margin: 8px 0 0; color: var(--text-muted); }
+.info li { margin: 4px 0; }
+
+/* ---------- Formularis ---------- */
+.form { display: flex; flex-direction: column; gap: 14px; }
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.form input {
+  font: inherit;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: #0f172a;
+  color: var(--text);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.form input:focus { border-color: var(--primary); }
+
+.error {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.muted { color: var(--text-muted); }
+.small { font-size: 0.85rem; }
+.center { text-align: center; }
+
+/* ---------- Rànquing ---------- */
+.leaderboard {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+.leaderboard li {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.leaderboard li:last-child { border-bottom: none; }
+.leaderboard .rank {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.leaderboard li:nth-child(1) .rank { color: #fbbf24; }
+.leaderboard li:nth-child(2) .rank { color: #cbd5e1; }
+.leaderboard li:nth-child(3) .rank { color: #b45309; }
+.leaderboard .player { font-weight: 500; }
+.leaderboard .score {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--primary);
+}
+.leaderboard li.me {
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 8px;
+}
+
+/* ---------- Joc ---------- */
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.game-hud {
+  display: flex;
+  gap: 24px;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  background: var(--bg-elev);
+  border-radius: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.game-hud strong { color: var(--accent); }
+
+.game-area {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(to bottom, #87ceeb 0%, #b0e0e6 60%, #f5deb3 60%, #f5deb3 100%);
+  box-shadow: var(--shadow);
+  max-width: 100%;
+}
+
+.cloud {
+  position: absolute;
+  font-size: 28px;
+  opacity: 0.85;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #92633a;
+  box-shadow: 0 1px 0 #6b4423;
+}
+
+.player {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 50px;
+  line-height: 1;
+  user-select: none;
+  transition: transform 0.05s;
+}
+.player.ducking { font-size: 40px; transform: scaleY(0.6); transform-origin: bottom; }
+
+.obstacle {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.obstacle-ground { font-size: 42px; }
+.obstacle-fly { font-size: 26px; }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.78);
+  color: var(--text);
+  text-align: center;
+  padding: 24px;
+}
+.overlay h3 { font-size: 2rem; margin: 0; color: #f8fafc; }
+.overlay .trophy {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
